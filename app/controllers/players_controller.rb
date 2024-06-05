@@ -8,4 +8,15 @@ class PlayersController < ApplicationController
     @player = Player.find_by(id: params[:id])
     render :show
   end
+
+  def create
+    @player = player.create(
+      name: params[:name],
+      team: params[:team],
+      position: params[:position],
+      number: params[:number],
+      image_url: params[:image_url]
+    )
+    render :show
+  end
 end

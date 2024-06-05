@@ -16,4 +16,11 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     assert_equal ["id", "name", "team", "position", "number", "image_url"], data.keys
   end
+
+  test "create" do
+    assert_difference "Player.count", 1 do
+      post "/players.json", params: { name: "test", team: "test", position: "test", number: 1, image_url: "test" }
+      assert_response 200
+    end
+  end
 end
